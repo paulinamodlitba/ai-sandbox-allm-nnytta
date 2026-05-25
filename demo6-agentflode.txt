@@ -1,0 +1,81 @@
+INTRO TILL AI-AGENTER
+Stadsbostäder AB · Digitaliseringsövning
+Nivå: avancerad · Passar: digitalt intresserade, IT, verksamhetsutveckling
+
+════════════════════════════════════════
+VAD ÄR EN AI-AGENT?
+════════════════════════════════════════
+
+En vanlig AI-konversation ser ut så här:
+  Du frågar → AI svarar → klart
+
+En AI-agent ser ut så här:
+  Du ger ett MÅL → AI:n planerar stegen → utför dem i ordning → rapporterar resultatet
+
+Agenten kan: läsa filer, söka på nätet, skriva tillbaka till system, anropa andra verktyg, fatta enkla beslut längs vägen.
+
+════════════════════════════════════════
+ETT KONKRET EXEMPEL: FELANMÄLNINGSAGENTEN
+════════════════════════════════════════
+
+Tänk dig att du ger en agent det här uppdraget:
+
+"Läs alla nya felanmälningar som kom in idag, bedöm prioritet, tilldela rätt fastighetsskötare och skicka en bekräftelse till hyresgästen."
+
+Agenten skulle kunna göra det här automatiskt:
+
+STEG 1 — Läs inkorgen
+  → Hämtar alla mejl märkta "felanmälan" sedan igår kl 17:00
+
+STEG 2 — Förstå och kategorisera
+  → Läser varje ärende
+  → Identifierar: fastighet, typ av fel, klagande hyresgäst, eventuell akutnivå
+  → Flaggar oklara ärenden för mänsklig granskning
+
+STEG 3 — Slå upp fastighetsskötare
+  → Kollar i systemet: vem ansvarar för Bergsgatan 12?
+  → Skickar ärende till rätt person med sammandrag
+
+STEG 4 — Svara hyresgästen
+  → Skriver ett personligt bekräftelsemejl: "Hej Fatima, vi har fått din anmälan om läckaget under diskbänken. Vi prioriterar det och en fastighetsskötare kontaktar dig inom 24 timmar."
+
+STEG 5 — Rapportera
+  → Summerar: 5 ärenden inkomna, 1 akut, 3 normala, 1 låg prio, 1 flaggat för granskning
+
+════════════════════════════════════════
+ÖVNING: DESIGNA ERT AGENTFLÖDE
+════════════════════════════════════════
+
+Välj en process ni vill förbättra på ert bolag. Beskriv den för AI:n och be om hjälp att:
+1. Identifiera vilka steg som är automatiserbara
+2. Identifiera var det fortfarande behövs en människa
+3. Skissa på hur ett agentflöde skulle se ut steg-för-steg
+
+Prompt att börja med:
+───────────────────────────────────────
+Jag vill designa ett AI-agentflöde för [beskriv er process].
+Nuläget ser ut så här: [beskriv hur det fungerar idag].
+Våra system är: [vilka system/verktyg ni använder].
+Hjälp mig: (1) identifiera vilka steg som är bra att automatisera,
+(2) vilka steg som bör ha mänsklig kontroll,
+(3) rita ett enkelt flödesschema i text för hur agenten skulle fungera.
+───────────────────────────────────────
+
+════════════════════════════════════════
+VAD SOM FAKTISKT FINNS ATT BYGGA MED IDAG
+════════════════════════════════════════
+
+• Claude Projects + egna instruktioner = enkel "agent" som alltid har rätt kontext
+• Make.com / Zapier = koppla ihop AI med era befintliga system utan kod
+• Microsoft Power Automate + Copilot = om ni är i M365-ekosystemet
+• Faktiska agentramverk (kräver IT): n8n, LangChain, OpenAI Assistants API
+
+Det behöver inte vara avancerat för att spara tid.
+En enkel e-postsorterare som körs varje morgon kan frigöra 30 minuter per dag — 120+ timmar per år för en handläggare.
+
+════════════════════════════════════════
+DISKUSSIONSFRÅGOR
+════════════════════════════════════════
+• Vilken process på ert bolag är mest lämpad för ett agentflöde?
+• Vad är ni oroliga för? (Datakvalitet? Fel beslut? Hyresgästupplevelse?)
+• Vem på ert bolag skulle behöva vara med för att det ska bli verklighet?

@@ -1,0 +1,66 @@
+VERKSAMHETSBESKRIVNING — STADSBOSTÄDER AB
+Underlag för nulägesanalys
+Dokumenterat: maj 2025
+
+════════════════════════════════════════
+BOLAGET I KORTHET
+════════════════════════════════════════
+Stadsbostäder AB är ett allmännyttigt bostadsbolag med ca 4 200 lägenheter i en medelstor svensk stad. Bolaget ägs av kommunen och har ca 85 anställda. Styrelsen har tre politiska representanter och två oberoende ledamöter.
+
+Omsättning: 320 Mkr (2024)
+Resultat: 8,2 Mkr
+Fastighetsvärde: ca 4,2 Mdr kr
+Genomsnittlig hyra: 6 350 kr/mån
+
+════════════════════════════════════════
+VERKSAMHETSOMRÅDEN
+════════════════════════════════════════
+
+Förvaltning (35 medarbetare)
+• Daglig skötsel, felanmälningar, fastighetsskötare
+• Svaghet: hög personalomsättning bland fastighetsskötare (22 % senaste 12 mån)
+• Svaghet: felanmälningsprocessen är manuell och splittrad på fyra kanaler
+• Styrka: stark lokal närvaro och god relation till hyresgäster i de flesta områden
+
+Fastighetsutveckling (8 medarbetare)
+• Underhållsplanering, renoveringsprojekt, nyproduktion
+• Svaghet: underhållsskulden beräknas till ca 280 Mkr
+• Svaghet: tre av sex fastighetsbestånd har försenade stamrenoveringar
+• Styrka: kompetent projektledning, bra leverantörsrelationer
+
+Ekonomi & administration (12 medarbetare)
+• Hyresadministration, ekonomistyrning, HR, IT
+• Svaghet: systemlandskapet är fragmenterat (Vitec, Excel, äldre lönesystem, separata SharePoint-sajter per avdelning)
+• Styrka: stabil ekonomi, god likviditet
+
+Kundservice (6 medarbetare)
+• Kundmottagning, uthyrning, hyresgästdialog
+• Svaghet: svarstider i telefon överstiger mål (mål: 2 min, snitt: 6,4 min)
+• Svaghet: ingen systematisk uppföljning av hyresgästnöjdhet sedan 2022
+• Styrka: personalen är engagerad och uppskattad av hyresgäster
+
+════════════════════════════════════════
+STRATEGISKA MÅL 2024–2027
+════════════════════════════════════════
+1. Öka hyresgästnöjdheten (NKI) från 68 till 75
+2. Minska underhållsskulden med 15 % till 2027
+3. Digitalisera minst tre kärnprocesser
+4. Minska personalomsättningen bland fastighetsskötare till under 12 %
+5. Nå klimatneutralitet i energianvändning till 2030
+
+════════════════════════════════════════
+KÄNDA UTMANINGAR
+════════════════════════════════════════
+• Kompetensförsörjning: svårt att rekrytera och behålla fastighetsskötare
+• Digitalisering: stor variation i digital mognad mellan avdelningar
+• Kommunikation: flerspråkig hyresgästbas (ca 35 % har annat modersmål än svenska), kommunikation sker nästan uteslutande på svenska
+• Styrning: KPI-uppföljning sker kvartalsvis men är manuell och tidskrävande
+• Politisk styrning: kommunen har tightare ekonomi, ökade krav på avkastning och social hänsyn samtidigt
+
+════════════════════════════════════════
+VAD LEDNINGEN FUNDERAR PÅ
+════════════════════════════════════════
+• Hur prioriterar vi digitaliseringen — var börjar vi?
+• Kan AI avlasta kundservice och förvaltning utan att tappa det mänskliga?
+• Hur mäter vi effekten av förändringsarbete bättre?
+• Hur involverar vi medarbetarna i digitalisering utan att skapa oro?

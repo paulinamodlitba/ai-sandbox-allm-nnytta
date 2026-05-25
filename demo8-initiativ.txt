@@ -1,0 +1,46 @@
+FÖRBÄTTRINGSINITIATIV — STADSBOSTÄDER AB
+Underlag för prioritering
+Sammanställt av: verksamhetsutveckling, april 2025
+
+════════════════════════════════════════
+BAKGRUND
+════════════════════════════════════════
+Under strategiarbetet 2024 identifierades följande åtta möjliga initiativ. Alla bedöms som relevanta men bolaget saknar resurser att driva alla parallellt. VD och ledningsgruppen behöver enas om prioriteringsordning inför budgetarbetet i september.
+
+Ingen formell kostnad- eller nyttoanalys har gjorts ännu — det är just det vi behöver hjälp med.
+
+════════════════════════════════════════
+INITIATIV ATT PRIORITERA
+════════════════════════════════════════
+
+INITIATIV A — Digital felanmälningsportal med AI-triage
+Bygga ut hyresgästportalen så att felanmälningar automatiskt kategoriseras och tilldelas fastighetsskötare. Beräknad investering: 350–600 kkr. Leverantör identifierad.
+
+INITIATIV B — Flerspråkig kommunikation med AI
+Använda AI för att i realtid översätta och anpassa hyresgästkommunikation till de fem vanligaste språken i beståndet. Beräknad kostnad: låg (prompt-baserad, kan börja som pilotprojekt).
+
+INITIATIV C — Underhållsplanering i nytt system
+Ersätta Excel-baserad underhållsplan med ett dedikerat system (t.ex. Planima). Kostar ca 200 kkr/år men ger bättre beslutsunderlag. Kräver dataimport och träning.
+
+INITIATIV D — Hyresgästundersökning och NKI-uppföljning
+Återuppta systematisk NKI-mätning (senast 2022). Digitalt verktyg + analys, ca 80 kkr/år. Direkt koppling till strategiskt mål nr 1.
+
+INITIATIV E — Kompetenslyft digital mognad (internutbildning)
+Strukturerat program för att höja digital kompetens i hela organisationen. Beräknat: 3 heldagar + coaching. Ca 150 kkr + intern tid. Förutsättning för att lyckas med övriga initiativ.
+
+INITIATIV F — Enhetlig KPI-dashboard för ledning
+Samla nyckeltal i ett dashboard (Power BI eller liknande) istället för manuella Excel-rapporter. Beräknad investering: 120 kkr + IT-tid. Sparar ca 2 dagar per månad i manuellt arbete.
+
+INITIATIV G — Rekryteringsprocess fastighetsskötare
+Se över hela rekrytering- och onboarding-processen för fastighetsskötare. Inklusive AI-stöd för annonsering och urval. Beräknad kostnad: 80 kkr (extern HR-konsult + verktyg).
+
+INITIATIV H — Pilotprojekt: AI-assistent i kundservice
+Testa ett AI-verktyg som stödjer kundservicemedarbetare med snabba svar och ärendehistorik. Inte en chatbot mot hyresgäst — utan stöd till handläggaren. Beräknad pilot: 6 månader, 120 kkr.
+
+════════════════════════════════════════
+BEGRÄNSNINGAR ATT TA HÄNSYN TILL
+════════════════════════════════════════
+• Budget för digitalisering 2025–2026: max 800 kkr totalt
+• IT-kapacitet: IT-avdelningen kan driva max 2 större projekt parallellt
+• Förändringströghet: organisationen är van vid stabilitet — för många initiativ parallellt riskerar att skapa oro
+• Politiskt prioriterat: kommunen vill se mätbar förbättring av hyresgästnöjdheten

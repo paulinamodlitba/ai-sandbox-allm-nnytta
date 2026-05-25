@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-sandlåda · Sveriges Allmännytta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: #2D1B33;
+    background: #FDF1E8;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    text-align: center;
+    padding: 88px 20px 72px;
+    background: linear-gradient(135deg, #FDF1E8 0%, #FFE8DA 100%);
+  }
+  .hero-eyebrow {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #D9603A;
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: 54px;
+    font-weight: 700;
+    line-height: 1.07;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    color: #2D1B33;
+  }
+  .hero .subtitle {
+    font-size: 22px;
+    line-height: 1.4;
+    font-weight: 400;
+    color: #6B5570;
+    margin-bottom: 28px;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .hero-tag {
+    background: rgba(217,96,58,0.12);
+    color: #D9603A;
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── Container ── */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 22px;
+  }
+  .section { padding: 64px 0; }
+  .section-title {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+    color: #2D1B33;
+  }
+  .section-sub {
+    font-size: 17px;
+    color: #6B5570;
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+
+  /* ── Roles intro ── */
+  .roles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .role-card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid rgba(45,27,51,0.07);
+  }
+  .role-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #D9603A;
+    margin-bottom: 8px;
+  }
+  .role-title { font-size: 17px; font-weight: 700; margin-bottom: 6px; color: #2D1B33; }
+  .role-desc { font-size: 14px; color: #6B5570; line-height: 1.6; }
+  .role-demos {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .role-demo-tag {
+    background: #FDF1E8;
+    color: #2D1B33;
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: white;
+    border-radius: 20px;
+    padding: 44px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(45,27,51,0.07), 0 1px 0 rgba(45,27,51,0.04);
+    border: 1px solid rgba(45,27,51,0.05);
+  }
+  .card h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 28px;
+    color: #2D1B33;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── File list ── */
+  .file-list { list-style: none; padding: 0; }
+  .file-list li {
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 16px 0;
+    color: #2D1B33;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    border-bottom: 1px solid #F0DCC9;
+  }
+  .file-list li:last-child { border-bottom: none; }
+  .file-dot {
+    width: 8px;
+    height: 8px;
+    background: #D9603A;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+  .file-list a {
+    color: #2D1B33;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.15s;
+  }
+  .file-list a:hover { color: #D9603A; }
+  .file-desc {
+    display: block;
+    color: #6B5570;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 3px;
+  }
+  .file-level {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 2px 8px;
+    border-radius: 999px;
+    margin-left: 8px;
+  }
+  .level-1 { background: rgba(217,96,58,0.10); color: #D9603A; }
+  .level-2 { background: rgba(217,96,58,0.18); color: #C04020; }
+  .level-3 { background: #2D1B33; color: white; }
+
+  /* ── Download ── */
+  .download-hero {
+    text-align: center;
+    padding: 64px 22px;
+    background: linear-gradient(135deg, #2D1B33 0%, #4A2C52 100%);
+    border-radius: 20px;
+    margin: 32px 0;
+  }
+  .download-hero h2 {
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: white;
+    letter-spacing: -0.02em;
+  }
+  .download-hero p { font-size: 18px; color: #F5C9B5; margin-bottom: 28px; }
+  .btn-primary {
+    display: inline-block;
+    background: #D9603A;
+    color: white;
+    padding: 16px 40px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+  }
+  .btn-primary:hover { background: #E87050; transform: scale(1.02); }
+
+  /* ── Tabs ── */
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    background: white;
+    border: 2px solid #2D1B33;
+    padding: 11px 30px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #2D1B33;
+    font-family: 'Inter', sans-serif;
+  }
+  .tab-btn.active { background: #2D1B33; color: white; }
+  .tab-btn:hover:not(.active) { background: #F0DCC9; }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* ── Steps ── */
+  .steps {
+    background: white;
+    border-radius: 20px;
+    padding: 44px;
+    box-shadow: 0 4px 20px rgba(45,27,51,0.07);
+    border: 1px solid rgba(45,27,51,0.05);
+  }
+  .steps h3 { font-size: 24px; font-weight: 700; margin-bottom: 32px; color: #2D1B33; }
+  .step { margin-bottom: 28px; display: flex; gap: 16px; align-items: flex-start; }
+  .step:last-child { margin-bottom: 0; }
+  .step-number {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, #D9603A 0%, #E87050 100%);
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 36px;
+    font-weight: 700;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+  .step-content { flex: 1; padding-top: 4px; }
+  .step-title { font-size: 17px; font-weight: 600; margin-bottom: 5px; color: #2D1B33; }
+  .step-description { font-size: 15px; line-height: 1.6; color: #6B5570; }
+  .step-description a { color: #D9603A; text-decoration: none; font-weight: 500; }
+  .step-description a:hover { text-decoration: underline; }
+  .code-block {
+    background: #FDF1E8;
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-top: 12px;
+    font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.65;
+    color: #2D1B33;
+    border-left: 3px solid #D9603A;
+    white-space: pre-wrap;
+    overflow-x: auto;
+  }
+  .note-box {
+    background: #FDF1E8;
+    border-radius: 12px;
+    padding: 20px 22px;
+    margin-top: 24px;
+    font-size: 15px;
+    line-height: 1.65;
+    color: #2D1B33;
+    border-left: 4px solid #D9603A;
+  }
+  .note-box strong { font-weight: 700; }
+
+  /* ── Level headers ── */
+  .level-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 44px 0 20px;
+  }
+  .level-header:first-child { margin-top: 0; }
+  .level-badge {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 6px 16px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .badge-1 { background: #D9603A; color: white; }
+  .badge-2 { background: rgba(217,96,58,0.15); color: #D9603A; }
+  .badge-3 { background: #2D1B33; color: white; }
+  .level-title { font-size: 22px; font-weight: 700; color: #2D1B33; }
+  .level-desc { font-size: 15px; color: #6B5570; margin-top: 2px; }
+
+  /* ── Demo blocks ── */
+  .demo-block {
+    padding: 28px 0;
+    border-bottom: 1px solid #F0DCC9;
+  }
+  .demo-block:last-child { border-bottom: none; padding-bottom: 0; }
+  .demo-title { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; flex-wrap: wrap; }
+  .demo-num { font-size: 11px; color: #D9603A; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; }
+  .demo-name { font-size: 18px; font-weight: 700; color: #2D1B33; }
+  .demo-audience {
+    font-size: 12px;
+    color: #6B5570;
+    background: #F5EDE4;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-weight: 500;
+  }
+  .demo-block p { margin: 6px 0 14px; color: #6B5570; font-size: 15px; line-height: 1.6; }
+  .prompt-label {
+    display: inline-block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #D9603A;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  /* ── Examples ── */
+  .examples {
+    background: white;
+    border-radius: 20px;
+    padding: 44px;
+    box-shadow: 0 4px 20px rgba(45,27,51,0.07);
+    border: 1px solid rgba(45,27,51,0.05);
+  }
+  .examples h3 { font-size: 24px; font-weight: 700; margin-bottom: 8px; color: #2D1B33; }
+  .examples > p { font-size: 16px; color: #6B5570; margin-bottom: 32px; line-height: 1.6; }
+  .examples h4 {
+    font-size: 19px;
+    font-weight: 700;
+    color: #2D1B33;
+    margin: 32px 0 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #F0DCC9;
+  }
+  .examples h4:first-of-type { margin-top: 0; }
+  .examples ul { list-style: none; padding: 0; }
+  .examples li {
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 11px 0;
+    color: #2D1B33;
+    border-bottom: 1px solid #FDF1E8;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .examples li:last-child { border-bottom: none; }
+  .examples li::before {
+    content: "→";
+    color: #D9603A;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── About ── */
+  .about-box {
+    background: #FDF1E8;
+    border-radius: 12px;
+    padding: 20px 22px;
+    margin-top: 18px;
+    font-size: 15px;
+    line-height: 1.65;
+    color: #2D1B33;
+    border-left: 4px solid #D9603A;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding: 56px 22px;
+    background: linear-gradient(135deg, #2D1B33 0%, #4A2C52 100%);
+    margin-top: 64px;
+    color: white;
+  }
+  .footer p { font-size: 15px; line-height: 1.6; color: #F5C9B5; margin-bottom: 6px; }
+  .footer strong { color: white; }
+  .footer .footer-title { font-size: 20px; font-weight: 700; color: white; margin-bottom: 8px; }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 36px; }
+    .hero .subtitle { font-size: 18px; }
+    .section-title { font-size: 28px; }
+    .card, .steps, .examples { padding: 28px 20px; }
+    .download-hero { padding: 48px 20px; }
+    .download-hero h2 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Hero ── -->
+<div class="hero">
+  <p class="hero-eyebrow">Sveriges Allmännytta · AI för verksamhetsutveckling</p>
+  <h1>AI-sandlådan</h1>
+  <p class="subtitle">Verkliga arbetsuppgifter. Fiktiv data. Kom igång direkt.</p>
+  <div class="hero-tags">
+    <span class="hero-tag">Processanalys</span>
+    <span class="hero-tag">Dataanalys</span>
+    <span class="hero-tag">Verksamhetsutveckling</span>
+    <span class="hero-tag">AI-agenter</span>
+  </div>
+</div>
+
+<div class="container">
+  <div class="section">
+
+    <!-- ── Vem är det för ── -->
+    <h2 class="section-title">Anpassad för er grupp</h2>
+    <p class="section-sub">Det fiktiva bolaget <strong>Stadsbostäder AB</strong> speglar en typisk allmännytta — med fastighetsbestånd, hyresgäster, underhållsplaner och ekonomi som känns igen. Demos är sorterade efter roll, börja med det som är närmast ditt dagliga arbete.</p>
+
+    <div class="roles-grid">
+      <div class="role-card">
+        <div class="role-label">VD &amp; ledning</div>
+        <div class="role-title">Strategiskt perspektiv</div>
+        <div class="role-desc">Hur leder man AI-förändring? Var börjar man? Hur mäter man effekt?</div>
+        <div class="role-demos">
+          <span class="role-demo-tag">Demo 1</span>
+          <span class="role-demo-tag">Demo 2</span>
+          <span class="role-demo-tag">Demo 3</span>
+        </div>
+      </div>
+      <div class="role-card">
+        <div class="role-label">Förvaltning &amp; fastighetsutveckling</div>
+        <div class="role-title">Planering &amp; underhåll</div>
+        <div class="role-desc">Processanalys, underhållsplaner och mönsterigenkänning i fastighetsdata.</div>
+        <div class="role-demos">
+          <span class="role-demo-tag">Demo 1</span>
+          <span class="role-demo-tag">Demo 2</span>
+          <span class="role-demo-tag">Demo 4</span>
+        </div>
+      </div>
+      <div class="role-card">
+        <div class="role-label">Verksamhetsutveckling</div>
+        <div class="role-title">Processer &amp; möjligheter</div>
+        <div class="role-desc">Kartlägg processer, identifiera AI-möjligheter och ta första stegen mot förändring.</div>
+        <div class="role-demos">
+          <span class="role-demo-tag">Demo 1</span>
+          <span class="role-demo-tag">Demo 5</span>
+        </div>
+      </div>
+      <div class="role-card">
+        <div class="role-label">Ekonomi &amp; controlling</div>
+        <div class="role-title">Analys &amp; rapportering</div>
+        <div class="role-desc">Budget vs utfall, avvikelseanalys, prognoser och styrelseunderlag med AI-stöd.</div>
+        <div class="role-demos">
+          <span class="role-demo-tag">Demo 1</span>
+          <span class="role-demo-tag">Demo 3</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Filer ── -->
+    <div class="card">
+      <h3>Demofiler för sandlådan</h3>
+      <ul class="file-list">
+        <li>
+          <div class="file-dot"></div>
+          <div>
+            <a href="demo5-processanalys.txt">Processanalys — felanmälningsflödet steg-för-steg</a>
+            <span class="file-desc">Nulägesbeskrivning av hur Stadsbostäder hanterar felanmälningar: 5 steg, kända problem och nyckeltal. Identifiera var AI gör störst nytta — och var du fortfarande behöver en människa.</span>
+            <span class="file-level level-1">Kärnan</span>
+          </div>
+        </li>
+        <li>
+          <div class="file-dot"></div>
+          <div>
+            <a href="demo7-verksamhetsbeskrivning.txt">Verksamhetsbeskrivning — Stadsbostäder AB</a>
+            <span class="file-desc">Bolagets avdelningar, styrkor, svagheter, strategiska mål och kända utmaningar. Underlag för nulägesanalys och SWOT med AI.</span>
+            <span class="file-level level-1">Kärnan</span>
+          </div>
+        </li>
+        <li>
+          <div class="file-dot"></div>
+          <div>
+            <a href="demo8-initiativ.txt">8 förbättringsinitiativ — underlag för prioritering</a>
+            <span class="file-desc">Åtta identifierade initiativ med beskrivning och uppskattad kostnad, plus budget- och resursbegränsningar. Be AI:n göra en prioriteringsmatris.</span>
+            <span class="file-level level-1">Kärnan</span>
+          </div>
+        </li>
+        <li>
+          <div class="file-dot"></div>
+          <div>
+            <a href="demo9-behovsanalys.txt">Underlag för intern behovsanalys</a>
+            <span class="file-desc">Bakgrund, målgrupper och frågeställningar inför en medarbetaranalys. Be AI:n designa intervjufrågor, enkät och analysplan.</span>
+            <span class="file-level level-1">Kärnan</span>
+          </div>
+        </li>
+        <li>
+          <div class="file-dot"></div>
+          <div>
+            <a href="demo3-underhallsdata.xlsx">Underhållsplan — 6 fastigheter, 16 åtgärder</a>
+            <span class="file-desc">Underhållsdata med två fliker: planerade åtgärder och sammanfattning. Innehåller försenade stamrenoveringar och kritiska insatser. AI:n ska hitta dem.</span>
+            <span class="file-level level-2">Datadrivet</span>
+          </div>
+        </li>
+        <li>
+          <div class="file-dot"></div>
+          <div>
+            <a href="demo4-budget-utfall.xlsx">Budget vs utfall 2025 — med noter och avvikelser</a>
+            <span class="file-desc">Helårsbudget och utfall Q1–Q3 per kostnadsslag. Fliken "Noter" förklarar avvikelserna. Perfekt för avvikelseanalys och styrelseunderlag.</span>
+            <span class="file-level level-2">Datadrivet</span>
+          </div>
+        </li>
+        <li>
+          <div class="file-dot"></div>
+          <div>
+            <a href="demo1-felanmalan-batch.txt">En veckas felanmälningar — Stadsbostäder AB</a>
+            <span class="file-desc">5 inkomna ärenden: bebis som fryser, vattenläckage som sprider sig, pensionär utan hiss. Bra för att visa AI:ns sorteringsförmåga.</span>
+            <span class="file-level level-2">Operativt</span>
+          </div>
+        </li>
+        <li>
+          <div class="file-dot"></div>
+          <div>
+            <a href="demo6-agentflode.txt">Intro till AI-agenter — designa ett eget flöde</a>
+            <span class="file-desc">Vad är en AI-agent och vad är möjligt? Läsunderlag och designövning — ta med er hem och fundera vidare.</span>
+            <span class="file-level level-3">Om vi hinner</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ── Download ── -->
+    <div class="download-hero">
+      <h2>Hämta alla filer</h2>
+      <p>Komplett paket med demofiler, Excel-data och processanalys</p>
+      <a href="allmännytta-material.zip" class="btn-primary">Ladda ner material</a>
+    </div>
+
+    <!-- ── Kom igång / Tabs ── -->
+    <h2 class="section-title" style="margin-top:8px;">Kom igång</h2>
+    <p class="section-sub">Välj det verktyg du föredrar — alla fungerar för dessa demos. Claude och ChatGPT kräver konto, Copilot ingår ofta i er Microsoft 365-licens.</p>
+
+    <div class="tabs">
+      <button class="tab-btn active" onclick="showTab('claude', this)">Claude</button>
+      <button class="tab-btn" onclick="showTab('chatgpt', this)">ChatGPT</button>
+      <button class="tab-btn" onclick="showTab('copilot', this)">Microsoft Copilot</button>
+    </div>
+
+    <!-- Claude -->
+    <div id="claude-tab" class="tab-content active">
+      <div class="steps">
+        <h3>Så här använder du Claude</h3>
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <div class="step-title">Skapa konto</div>
+            <div class="step-description">Gå till <a href="https://claude.ai">claude.ai</a> och skapa ett gratis konto med din e-post. Gratiskontot räcker för alla demos.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <div class="step-title">Skapa ett Project</div>
+            <div class="step-description">Klicka på "Projects" i vänstermenyn → "New Project" → Namnge det "Stadsbostäder sandlåda". Projects sparar era filer och instruktioner.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <div class="step-title">Ladda upp demofiler</div>
+            <div class="step-description">Klicka "Add content" och ladda upp de filer ni vill jobba med. Börja med <em>demo5-processanalys.txt</em> — det är kärnan i kursen.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <div class="step-title">Sätt egna instruktioner (kraftfullt)</div>
+            <div class="step-description">Klicka "Set custom instructions" och klistra in detta:</div>
+            <div class="code-block">Du är en erfaren AI-assistent specialiserad på allmännyttiga bostadsbolag i Sverige. Du hjälper med: felanmälningar och underhållsplanering, ekonomianalys och budgetuppföljning, kommunikation med hyresgäster, verksamhetsutveckling och processförbättring. Bolaget du jobbar med heter Stadsbostäder AB. Svara alltid på svenska. Var konkret, handlingsorienterad och mänsklig i tonen. Påminn om att verifiera juridiska råd mot källan.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <div class="step-title">Kör en demo</div>
+            <div class="step-description">Börja med Demo 1 om du vill se snabb effekt. Demo 3 och 4 kräver att du laddar upp Excel-filerna — ladda upp dem till Projektet så finns de alltid tillgängliga.</div>
+          </div>
+        </div>
+        <div class="note-box">
+          <strong>Tips:</strong> Claude Projects sparar allt mellan sessioner. Ladda upp alla demofiler på en gång, så kan du byta mellan dem utan att ladda upp om. Prova att ställa uppföljningsfrågor: "Förklara varför du prioriterade just det ärendet" eller "Ge mig ett konkret exempel från datan."
+        </div>
+      </div>
+    </div>
+
+    <!-- ChatGPT -->
+    <div id="chatgpt-tab" class="tab-content">
+      <div class="steps">
+        <h3>Så här använder du ChatGPT</h3>
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <div class="step-title">Skapa konto</div>
+            <div class="step-description">Gå till <a href="https://chat.openai.com">chat.openai.com</a>. Gratiskonto fungerar för textdemos. ChatGPT Plus (ca 220 kr/mån) ger tillgång till Projects och Excel-analys (Demo 3 och 4).</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <div class="step-title">Starta en ny chatt</div>
+            <div class="step-description">Klicka "New chat". Plus-kunder: skapa ett Project för att spara kontexten. Gratisnivå: börja varje session med att ge ChatGPT kontext (se steg 4).</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <div class="step-title">Ladda upp filer</div>
+            <div class="step-description">Klicka på pappersgömman (📎) och ladda upp den demofile du vill jobba med. ChatGPT är särskilt bra på Excel — testa Demo 4 med budget-filen.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <div class="step-title">Ge ChatGPT kontext</div>
+            <div class="step-description">Börja med:</div>
+            <div class="code-block">Jag har laddat upp material från Stadsbostäder AB, ett allmännyttigt bostadsbolag. Du är min AI-assistent specialiserad på allmännytta. Hjälp mig analysera felanmälningar, underhållsdata och budget, samt förbättra hyresgästkommunikation. Svara på svenska. Bekräfta att du förstår.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <div class="step-title">Testa en demo</div>
+            <div class="step-description">Demo 4 (budget) med Excel-filen är ett bra ställe att börja om du vill se AI:ns analytiska kapacitet direkt. Be om en grafisk sammanfattning — resultatet brukar imponera.</div>
+          </div>
+        </div>
+        <div class="note-box">
+          <strong>Tips:</strong> ChatGPT är bra på att generera tabeller och sammanfattningar från Excel-data. Prova: "Visualisera avvikelserna som ett stapeldiagram och förklara de tre största."
+        </div>
+      </div>
+    </div>
+
+    <!-- Copilot -->
+    <div id="copilot-tab" class="tab-content">
+      <div class="steps">
+        <h3>Så här använder du Microsoft Copilot</h3>
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <div class="step-title">Kontrollera tillgång</div>
+            <div class="step-description">Copilot ingår i Microsoft 365-prenumerationer. Kolla med er IT-avdelning. Gå till <a href="https://copilot.microsoft.com">copilot.microsoft.com</a> eller använd Copilot direkt i Excel, Word eller Teams.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <div class="step-title">Öppna Copilot</div>
+            <div class="step-description">Starta en ny konversation eller klicka på Copilot-ikonen i valfritt Office-program. Välj "Office Agent (frontier)" om alternativet finns.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <div class="step-title">Ladda upp filer</div>
+            <div class="step-description">Klicka på pappersklämman eller dra demofilen direkt in i chatten. Tips: öppna Excel-demofilen i Excel och använd Copilot direkt i programmet — ännu smidigare.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <div class="step-title">Ge Copilot kontext</div>
+            <div class="step-description">Skriv:</div>
+            <div class="code-block">Jag har laddat upp material från Stadsbostäder AB, ett allmännyttigt bostadsbolag. Du är min assistent för fastighetsförvaltning och verksamhetsutveckling. Hjälp mig analysera underhållsdata och ekonomi, prioritera felanmälningar och förbättra kommunikation med hyresgäster. Svara på svenska.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <div class="step-title">Testa Demo 4 direkt i Excel</div>
+            <div class="step-description">Öppna <em>demo4-budget-utfall.xlsx</em> i Excel och aktivera Copilot i kalkylbladet. Be om: "Sammanfatta de tre största avvikelserna och föreslå hur vi ska hantera dem i styrelserapporteringen."</div>
+          </div>
+        </div>
+        <div class="note-box">
+          <strong>Fördel med Copilot:</strong> Om ni är i Microsoft 365 stannar datan inom er Microsoft-miljö — enklare GDPR-hantering och direkt integration med Teams, Outlook och SharePoint. Bra utgångspunkt om er IT-policy kräver det.
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Demos ── -->
+    <div class="card" style="margin-top:44px;">
+      <h3>Fem demos — börja här</h3>
+
+      <!-- Kärnan -->
+      <div class="level-header">
+        <span class="level-badge badge-1">Kärnan</span>
+        <div>
+          <div class="level-title">AI för verksamhetsutveckling</div>
+          <div class="level-desc">Börja här — detta är det viktigaste</div>
+        </div>
+      </div>
+
+      <div class="demo-block">
+        <div class="demo-title">
+          <span class="demo-num">Demo 1 · Processanalys</span>
+          <span class="demo-name">Kartlägg en process och identifiera AI-möjligheter</span>
+          <span class="demo-audience">Alla</span>
+        </div>
+        <p>Använd <em>demo5-processanalys.txt</em>. En detaljerad nulägesbeskrivning av hur Stadsbostäder hanterar felanmälningar — 5 steg, kända svagheter och nyckeltal. Var gör AI störst nytta? Var är det för riskabelt att automatisera? Det här är kärnan i att jobba med AI som verksamhetsutvecklare.</p>
+        <span class="prompt-label">Prompt</span>
+        <div class="code-block">Läs processanalysen för Stadsbostäders felanmälningsflöde. Jag vill att du:
+(1) Identifierar de 3 steg där AI-stöd sannolikt ger störst tidsbesparing eller kvalitetsförbättring
+(2) Identifierar de 2 steg där det fortfarande är viktigt att ha en människa i loopen — och varför
+(3) Uppskattar grovt hur mycket tid per vecka som skulle kunna frigöras vid automation av steg 1 och 2
+(4) Föreslår ett realistiskt "första steg" vi kan testa på en månads sikt utan stor IT-investering
+
+Var ärlig om risker och vad som kan gå fel.
+
+[Klistra in innehållet från demo5-processanalys.txt]</div>
+      </div>
+
+      <div class="demo-block">
+        <div class="demo-title">
+          <span class="demo-num">Demo 2 · Nulägesanalys</span>
+          <span class="demo-name">SWOT och gap-analys av er verksamhet</span>
+          <span class="demo-audience">Ledning · Verksamhetsutveckling · Alla</span>
+        </div>
+        <p>Använd <em>demo7-verksamhetsbeskrivning.txt</em>. En strukturerad bild av Stadsbostäder: avdelningar, styrkor, svagheter, mål och utmaningar. Be AI:n göra en SWOT-analys och identifiera de viktigaste gapen mellan nuläge och strategiska mål — och var AI kan bidra mest.</p>
+        <span class="prompt-label">Prompt</span>
+        <div class="code-block">Läs verksamhetsbeskrivningen för Stadsbostäder AB. Gör sedan följande:
+(1) Sammanfatta en SWOT-analys baserat på informationen (håll den kort — max 3 punkter per kvadrant)
+(2) Identifiera de 3 tydligaste gapen mellan nuläge och de strategiska målen för 2027
+(3) Peka ut 2–3 områden där AI-stöd skulle ha störst effekt på att stänga dessa gap
+(4) Föreslå en rimlig startpunkt — vad gör ni härnäst om ni ska börja i liten skala?
+
+Var konkret. Undvik generella råd som gäller alla bolag.
+
+[Klistra in innehållet från demo7-verksamhetsbeskrivning.txt]</div>
+      </div>
+
+      <div class="demo-block">
+        <div class="demo-title">
+          <span class="demo-num">Demo 3 · Prioritering</span>
+          <span class="demo-name">Prioriteringsmatris för förbättringsinitiativ</span>
+          <span class="demo-audience">Ledning · Verksamhetsutveckling · Ekonomi</span>
+        </div>
+        <p>Använd <em>demo8-initiativ.txt</em>. Åtta identifierade initiativ, en begränsad budget och en IT-avdelning som inte kan springa åt alla håll. Be AI:n göra en prioriteringsanalys — och se om den landar ungefär som ni själva tänkt, eller om den utmanar er.</p>
+        <span class="prompt-label">Prompt</span>
+        <div class="code-block">Läs listan med förbättringsinitiativ och begränsningarna för Stadsbostäder AB. Gör en prioriteringsanalys:
+(1) Bedöm varje initiativ utifrån tre kriterier: förväntad nytta, genomförbarhet och strategisk koppling (skala 1–3)
+(2) Presentera resultatet som en enkel matris eller rankad lista
+(3) Rekommendera vilka 2–3 initiativ som bör startas first, och motivera varför
+(4) Peka ut vilket initiativ som är en förutsättning för de andra — om det finns ett sådant
+
+Håll analysen kort och beslutsbar. Vi ska kunna ta den till ledningsgruppen.
+
+[Klistra in innehållet från demo8-initiativ.txt]</div>
+      </div>
+
+      <div class="demo-block">
+        <div class="demo-title">
+          <span class="demo-num">Demo 4 · Intervjudesign</span>
+          <span class="demo-name">AI som intervjuassistent — designa en intern behovsanalys</span>
+          <span class="demo-audience">HR · Verksamhetsutveckling · Ledning</span>
+        </div>
+        <p>Använd <em>demo9-behovsanalys.txt</em>. Stadsbostäder ska kartlägga medarbetarnas behov inför digitaliseringen — men är osäkra på hur. Be AI:n designa intervjufrågor, en kort enkät och en plan för hur svaren ska analyseras. Det här är en direkt användbar arbetsuppgift för rollen.</p>
+        <span class="prompt-label">Prompt</span>
+        <div class="code-block">Läs underlaget för Stadsbostäders interna behovsanalys. Hjälp mig designa analysen:
+(1) Föreslå 6–8 intervjufrågor för djupintervjuerna — frågor som ger insikt om faktisk arbetssituation, inte bara åsikter
+(2) Skriv en kort enkät (max 8 frågor) för den bredare medarbetargruppen — mixad med skalfrågor och en öppen fråga
+(3) Beskriv kort hur vi analyserar svaren — vad letar vi efter, hur grupperar vi?
+(4) Föreslå hur vi kommunicerar syftet till medarbetarna för att minska oro kring AI och förändring
+
+[Klistra in innehållet från demo9-behovsanalys.txt]</div>
+      </div>
+
+      <!-- Datadrivet -->
+      <div class="level-header">
+        <span class="level-badge badge-2">Datadrivet</span>
+        <div>
+          <div class="level-title">AI som analysverktyg</div>
+          <div class="level-desc">Ladda upp Excel-filerna och låt AI:n hitta det du missar</div>
+        </div>
+      </div>
+
+      <div class="demo-block">
+        <div class="demo-title">
+          <span class="demo-num">Demo 5 · Underhållsplanering</span>
+          <span class="demo-name">Hitta mönster och risker i underhållsplanen</span>
+          <span class="demo-audience">Förvaltning · Fastighetsutveckling · Ledning</span>
+        </div>
+        <p>Ladda upp <em>demo3-underhallsdata.xlsx</em>. Datan innehåller 16 planerade åtgärder för 6 fastigheter. Två fastigheter har försenade kritiska åtgärder. En tredje har tre försenade poster på rad. Ser AI:n det — och vad säger den om riskerna?</p>
+        <span class="prompt-label">Prompt</span>
+        <div class="code-block">Analysera underhållsdatan för Stadsbostäder AB. Jag vill att du:
+(1) Identifierar de fastigheter som har störst underhållsskuld eller kritiska förseningar
+(2) Beräknar total planerad kostnad de närmaste 3 åren och flaggar om det verkar realistiskt
+(3) Lyfter fram de 3 åtgärder som bör prioriteras om vi måste välja
+(4) Föreslår hur vi kan presentera detta för styrelsen — tydligt om riskerna, utan att skapa panik
+
+Var konkret och referera till fastighetsnamnen i datan.</div>
+      </div>
+
+      <div class="demo-block">
+        <div class="demo-title">
+          <span class="demo-num">Demo 6 · Ekonomianalys</span>
+          <span class="demo-name">Avvikelseanalys och styrelseunderlag från budget vs utfall</span>
+          <span class="demo-audience">Ekonomi · Controlling · Ledning</span>
+        </div>
+        <p>Ladda upp <em>demo4-budget-utfall.xlsx</em>. Budgetdata för 10 kostnadslag, utfall Q1–Q3 och en Q4-prognos. Det finns en post som spruckit rejält — och en förklaringsnot på flik 2. Ser AI:n vad som hänt och kan den skriva ett styrelseunderlag?</p>
+        <span class="prompt-label">Prompt</span>
+        <div class="code-block">Analysera budget och utfall för Stadsbostäder AB. Gör följande:
+(1) Identifiera de tre kostnadslagen med störst procentuell avvikelse mot budget
+(2) Läs noterna och förklara om avvikelserna är oroande eller förklaringsbara
+(3) Beräkna helårsprognos baserat på Q1–Q3 och Q4-prognosen
+(4) Skriv ett kort styrelseunderlag (max 200 ord): ekonomiskt läge och vad vi avser göra
+
+Var tydlig om vad som är fakta från datan och vad som är din bedömning.</div>
+      </div>
+
+      <!-- Operativt -->
+      <div class="level-header">
+        <span class="level-badge badge-2">Operativt</span>
+        <div>
+          <div class="level-title">AI i det dagliga arbetet</div>
+          <div class="level-desc">Bra att visa — men inte kärnan i er kurs</div>
+        </div>
+      </div>
+
+      <div class="demo-block">
+        <div class="demo-title">
+          <span class="demo-num">Demo 7 · Sortering</span>
+          <span class="demo-name">Sortera en veckas felanmälningar</span>
+          <span class="demo-audience">Förvaltning · Kundservice</span>
+        </div>
+        <p>Använd <em>demo1-felanmalan-batch.txt</em>. Fem ärenden: ett spädbarn som fryser, ett läckage som sprider sig uppåt i väggen, en pensionär utan hiss. Samma fastighet dyker upp i två ärenden — ser AI:n kopplingen? Bra demo för att illustrera AI:ns förmåga att läsa text och göra bedömningar.</p>
+        <span class="prompt-label">Prompt</span>
+        <div class="code-block">Du är förvaltningsassistent på Stadsbostäder AB. Läs igenom alla felanmälningar och gör följande:
+(1) Lista ärendena och prioritera dem 1–3 (1 = akut, 2 = normal, 3 = låg)
+(2) Motivera varje prioritet — särskilt om det finns säkerhets- eller hälsorisker
+(3) Notera om det verkar finnas samband mellan ärenden (samma fastighet, liknande problem)
+(4) Skriv ett varmt svarsmejl till det mest akuta ärendet — konkret om nästa steg och när
+
+[Klistra in innehållet från demo1-felanmalan-batch.txt]</div>
+      </div>
+
+      <!-- Om vi hinner -->
+      <div class="level-header">
+        <span class="level-badge badge-3">Om vi hinner</span>
+        <div>
+          <div class="level-title">Vad är möjligt härnäst?</div>
+          <div class="level-desc">Inte hands-on — ett tankeexperiment att ta med hem</div>
+        </div>
+      </div>
+
+      <div class="demo-block">
+        <div class="demo-title">
+          <span class="demo-num">Demo 8 · AI-agenter</span>
+          <span class="demo-name">Designa ett agentflöde för er verksamhet</span>
+          <span class="demo-audience">Alla — diskussion snarare än övning</span>
+        </div>
+        <p>Läs <em>demo6-agentflode.txt</em> som bakgrund. En AI-agent är inte en chatt — den utför uppgifter i sekvens, fattar enkla beslut och kopplar ihop system. Diskussionsövningen: vilken process på ert bolag skulle vara kandidat? Vad är ni oroliga för? Ingen kod krävs.</p>
+        <span class="prompt-label">Prompt</span>
+        <div class="code-block">Jag vill designa ett AI-agentflöde för [beskriv er process, t.ex. "hantering av felanmälningar" eller "månadsrapportering till styrelsen"].
+
+Nuläget ser ut så här: [beskriv hur det fungerar idag med de konkreta stegen]
+
+Våra system är: [t.ex. Vitec, Outlook, Excel, Teams]
+
+Hjälp mig:
+(1) Identifiera vilka steg som är lämpliga att automatisera
+(2) Identifiera var en människa fortfarande behöver vara i loopen — och varför
+(3) Rita ett enkelt flödesschema i text för hur agenten skulle fungera
+(4) Föreslå ett sätt att börja testa utan stora IT-investeringar</div>
+      </div>
+    </div>
+
+    <!-- ── Exempelfrågor ── -->
+    <div class="examples" style="margin-top:28px;">
+      <h3>Fler frågor att utforska</h3>
+      <p>Börja med en specifik fråga, granska svaret kritiskt, ställ sedan en följdfråga. AI är bra på att fördjupa om du ber om det. Frågorna är sorterade efter arbetsområde.</p>
+
+      <h4>Felanmälan &amp; underhåll</h4>
+      <ul>
+        <li>Vi har 18 månaders underhållshistorik. Kan du identifiera vilka fastigheter som genererar flest återkommande ärenden av samma typ?</li>
+        <li>Prioritera dessa felanmälningar utifrån tre kriterier: säkerhetsrisk, kostnad för sen åtgärd, och boendeupplevelse.</li>
+        <li>Vi planerar att renovera tre fastigheter. Utifrån underhållsdatan — i vilken ordning bör vi prioritera, och varför?</li>
+        <li>Skriv en veckorapport för förvaltningschefen baserat på veckans felanmälningar. Max en A4-sida.</li>
+      </ul>
+
+      <h4>Ekonomi &amp; rapportering</h4>
+      <ul>
+        <li>Vi har en budgetavvikelse på 12 % inom reparationer. Vad kan det bero på och hur argumenterar jag för det i nästa styrelsemöte?</li>
+        <li>Skriv ett utkast till ekonomiavsnittet i vår halvårsrapport baserat på budget vs utfall-filen. Max 300 ord.</li>
+        <li>Vi överväger att skjuta upp en underhållsinvestering på 8,5 Mkr. Vilka risker och kostnader bör vi räkna med?</li>
+        <li>Kan du spela djävulens advokat mot mitt förslag att ta ett lån för att finansiera stamrenoveringen nu?</li>
+      </ul>
+
+      <h4>Verksamhetsutveckling &amp; strategi</h4>
+      <ul>
+        <li>Styrelsen är skeptisk till AI-investeringar. Hur bygger jag ett business case för att börja i liten skala?</li>
+        <li>Vi vill minska svarstiden på felanmälningar från 2,5 timmar till under 1 timme. Vilka tre åtgärder ger störst effekt?</li>
+        <li>Hjälp mig kartlägga vår hyresgäststjänstprocess och identifiera de fem största friktionspunkterna.</li>
+        <li>Vi har en medarbetare som är skeptisk till AI och orolig för sin roll. Hur pratar vi om det konstruktivt?</li>
+      </ul>
+
+      <h4>Kommunikation &amp; hyresgäster</h4>
+      <ul>
+        <li>Skriv ett hyresgästbrev om en hyreshöjning på 3,1 % i två versioner: juridiskt korrekt och varmt mänskligt. Diskutera skillnaden.</li>
+        <li>Översätt det här driftmeddelandet till arabiska, somaliska, polska och tigrinja. Behåll tydlig och vänlig ton.</li>
+        <li>Vi ska kommunicera en 8-veckors stamrenovering. Skriv notiser för anslagstavlan, mejl och SMS — med rätt längd och ton för varje kanal.</li>
+        <li>En hyresgäst är väldigt upprörd i mejlet. Hjälp mig formulera ett svar som erkänner problemet utan att lova saker vi inte kan hålla.</li>
+      </ul>
+
+      <div class="note-box" style="margin-top:28px;">
+        <strong>Hur du bygger vidare:</strong> Börja med en specifik fråga. Granska svaret kritiskt — håller du med? Ställ sedan en följdfråga: "Förklara mer om varför du prioriterade just den fastigheten" eller "Kan du ge ett konkret exempel från datan som stödjer den slutsatsen?" Kritisk granskning är en del av att jobba bra med AI.
+      </div>
+      <div class="note-box">
+        <strong>Viktigt om GDPR:</strong> Ladda aldrig upp känsliga personuppgifter (personnummer, löner, hyresgästuppgifter) i publika AI-verktyg. Alla filer i sandlådan är fiktiva och säkra att använda. När du testar med egna filer — anonymisera alltid känslig data först. Microsoft Copilot är ett bra alternativ om er IT-policy kräver att data stannar i er miljö.
+      </div>
+    </div>
+
+    <!-- ── Om sandlådan ── -->
+    <div class="card" style="margin-top:28px;">
+      <h3>Vad det här är till för</h3>
+      <p style="font-size:16px;color:#2D1B33;line-height:1.65;margin-bottom:14px;">
+        Sandlådan är till för att <strong>provköra AI på arbetsuppgifter som faktiskt finns i er vardag</strong>. Felanmälningar, underhållsplaner, budgetavvikelser, hyresgästkommunikation och processer ni vill förbättra. Allt material är fiktivt — bolaget Stadsbostäder AB existerar inte och alla hyresgäster är påhittade.
+      </p>
+      <p style="font-size:16px;color:#2D1B33;line-height:1.65;margin-bottom:0;">
+        Tanken är att ni ska gå från kurs idag till att faktiskt testa på kontoret imorgon — och sedan bestämma vad ni vill göra med AI hos er.
+      </p>
+      <div class="about-box">
+        <strong>ÖrebroBostäder-teamet:</strong> Ni är sex kollegor här idag. Det är ett guldläge — kör Demo 1 (processanalysen) tillsammans och byt ut Stadsbostäders felanmälningsflöde mot en process ni faktiskt jobbar med. Ni kan ta med slutsatserna hem som ett riktigt underlag.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── Footer ── -->
+<div class="footer">
+  <p class="footer-title">Paulina Modlitba</p>
+  <p>Föreläsning &amp; material framtagna för Sveriges Allmännytta · Juni 2025</p>
+  <p style="margin-top:14px;font-size:13px;opacity:0.6;">Allt material är fritt att använda i utbildningssyfte.</p>
+</div>
+
+<script>
+  function showTab(platform, btn) {
+    document.querySelectorAll('.tab-content').forEach(function(t) { t.classList.remove('active'); });
+    document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.getElementById(platform + '-tab').classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>

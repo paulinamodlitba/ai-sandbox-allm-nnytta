@@ -1,0 +1,75 @@
+PROCESSANALYS — FELANMÄLNINGSFLÖDET
+Stadsbostäder AB · Förvaltningsavdelningen
+Dokumenterat av: verksamhetsutveckling, maj 2025
+
+════════════════════════════════════════
+NULÄGESBESKRIVNING
+════════════════════════════════════════
+
+Stadsbostäder tar emot felanmälningar via fyra kanaler:
+1. Hyresgästportal (webformulär) — ca 40 % av volymen
+2. E-post till info@stadsbostader.se — ca 35 %
+3. Telefonsamtal (kundservice) — ca 20 %
+4. Personligt besök i receptionen — ca 5 %
+
+Volym: ca 180–220 felanmälningar per vecka
+
+════════════════════════════════════════
+STEG-FÖR-STEG: NUVARANDE PROCESS
+════════════════════════════════════════
+
+STEG 1 — Mottagning (dagligen, 2 handläggare)
+• E-post och portal läses igenom manuellt varje morgon kl 08:00
+• Telefonärenden skrivs in manuellt i ärendesystemet (Vitec) av kundservice
+• Genomsnittstid för att läsa och kategorisera ett ärende: 4–6 min
+• Problem: oklara ärenden ("det är fel på nåt i köket") kräver uppföljningssamtal
+
+STEG 2 — Kategorisering och prioritering (manuell)
+• Handläggare bedömer varje ärende utifrån tre nivåer:
+  - AKUT (vatten/el/brand/säkerhet) → direkt till jour
+  - NORMALT → planeras in inom 5 arbetsdagar
+  - LÅG PRIORITET → planeras vid nästa schemalagda besök
+• Bedömning baseras på handläggarens erfarenhet — inga fasta kriterier nedskrivna
+• Risk: olika handläggare gör olika bedömningar på liknande ärenden
+
+STEG 3 — Tilldelning till fastighetsskötare
+• Handläggare slår upp vilken fastighetsskötare som ansvarar för berörd adress (Excel-lista)
+• Skickar ärende via e-post till fastighetsskötaren
+• Problem: fastighetsskötare har ingen enhetlig kvittensrutin — oklart om de sett ärendet
+• Genomsnittlig tid från anmälan till tilldelning: 2,5 timmar (kontorstid)
+
+STEG 4 — Utförande och återrapportering
+• Fastighetsskötare löser ärendet och mejlar/ringer tillbaka till handläggare
+• Handläggare uppdaterar Vitec manuellt
+• Hyresgästen får ingen automatisk uppdatering — om de undrar: de ringer
+
+STEG 5 — Avslut och uppföljning
+• Ärende markeras som avslutat i Vitec
+• Ingen systematisk uppföljning om hyresgästen är nöjd
+• Ingen analys av återkommande ärenden per fastighet (görs ad hoc)
+
+════════════════════════════════════════
+KÄNDA PROBLEM (sammanfattade)
+════════════════════════════════════════
+• Hyresgäster ringer för statusuppdatering (skapar dubbelarbete)
+• Akuta ärenden missas ibland på helger när ingen läser e-post
+• Bedömningskvaliteten varierar mellan handläggare
+• Ingen aggregerad bild av vilka fastigheter som genererar mest ärenden
+• Överlämning fastighetsskötare → handläggare sker via e-post (svårt att följa)
+• Flerspråkiga hyresgäster skapar missförstånd i kategorisering
+
+════════════════════════════════════════
+NYCKELTAL (2024)
+════════════════════════════════════════
+• Genomsnittlig lösningstid, akuta ärenden: 4,2 timmar
+• Genomsnittlig lösningstid, normala ärenden: 3,8 dagar
+• Andel ärenden med uppföljningssamtal från hyresgäst: 31 %
+• Andel återkommande ärenden (samma adress, samma typ): 18 %
+• Handläggningstid per ärende (admin): 12 minuter totalt
+
+════════════════════════════════════════
+FRÅGOR TILL GRUPPEN
+════════════════════════════════════════
+• Var i det här flödet kan AI göra störst nytta?
+• Vilka steg är riskabla att automatisera? Varför?
+• Vad behöver fortfarande ha en människa i loopen?
