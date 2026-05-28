@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enkätresultat · AI för verksamhetsutveckling</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: #2D1B33;
+    background: #FDF1E8;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 72px 20px 56px;
+    background: linear-gradient(135deg, #2D1B33 0%, #4A2C52 100%);
+  }
+  .hero-eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #F5C9B5;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: white;
+    margin-bottom: 12px;
+  }
+  .hero p {
+    font-size: 18px;
+    color: #C4A8C8;
+    margin-bottom: 32px;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .hero-stat { text-align: center; }
+  .hero-stat-num {
+    font-size: 48px;
+    font-weight: 700;
+    color: #D9603A;
+    line-height: 1;
+  }
+  .hero-stat-label {
+    font-size: 13px;
+    color: #C4A8C8;
+    margin-top: 4px;
+    font-weight: 500;
+  }
+
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 22px; }
+  .section { padding: 56px 0; }
+  .section-title {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+    color: #2D1B33;
+  }
+  .section-sub {
+    font-size: 16px;
+    color: #6B5570;
+    margin-bottom: 36px;
+  }
+
+  /* Charts grid */
+  .charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 24px;
+  }
+  .chart-card {
+    background: white;
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 4px 20px rgba(45,27,51,0.07), 0 1px 0 rgba(45,27,51,0.04);
+    border: 1px solid rgba(45,27,51,0.05);
+  }
+  .chart-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2D1B33;
+    margin-bottom: 4px;
+  }
+  .chart-card p {
+    font-size: 13px;
+    color: #6B5570;
+    margin-bottom: 24px;
+  }
+  .chart-wrap { position: relative; height: 200px; }
+
+  /* Themes */
+  .themes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .theme-card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid rgba(45,27,51,0.05);
+    box-shadow: 0 2px 12px rgba(45,27,51,0.06);
+  }
+  .theme-num {
+    font-size: 40px;
+    font-weight: 700;
+    color: #D9603A;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .theme-label {
+    font-size: 15px;
+    font-weight: 700;
+    color: #2D1B33;
+    margin-bottom: 6px;
+  }
+  .theme-desc {
+    font-size: 13px;
+    color: #6B5570;
+    line-height: 1.5;
+  }
+  .theme-examples {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .theme-tag {
+    font-size: 11px;
+    background: #FDF1E8;
+    color: #6B5570;
+    border-radius: 999px;
+    padding: 3px 10px;
+    font-weight: 500;
+  }
+
+  /* Projects */
+  .projects-wrap {
+    background: white;
+    border-radius: 20px;
+    padding: 36px;
+    box-shadow: 0 4px 20px rgba(45,27,51,0.07);
+    border: 1px solid rgba(45,27,51,0.05);
+  }
+  .projects-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .project-tag {
+    background: #FDF1E8;
+    border: 1.5px solid #F0DCC9;
+    color: #2D1B33;
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .project-tag.highlight {
+    background: rgba(217,96,58,0.10);
+    border-color: rgba(217,96,58,0.3);
+    color: #D9603A;
+  }
+
+  /* Quotes */
+  .quotes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .quote-card {
+    background: white;
+    border-radius: 20px;
+    padding: 32px;
+    border-left: 4px solid #D9603A;
+    box-shadow: 0 4px 20px rgba(45,27,51,0.07);
+  }
+  .quote-text {
+    font-size: 16px;
+    line-height: 1.65;
+    color: #2D1B33;
+    font-style: italic;
+    margin-bottom: 16px;
+  }
+  .quote-meta {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #D9603A;
+  }
+
+  /* Takeaways */
+  .takeaways {
+    background: linear-gradient(135deg, #2D1B33 0%, #4A2C52 100%);
+    border-radius: 20px;
+    padding: 44px;
+    margin-top: 8px;
+  }
+  .takeaways h2 {
+    font-size: 26px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 28px;
+    letter-spacing: -0.01em;
+  }
+  .takeaway-list { list-style: none; padding: 0; }
+  .takeaway-list li {
+    font-size: 16px;
+    line-height: 1.65;
+    color: #C4A8C8;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .takeaway-list li:last-child { border-bottom: none; }
+  .takeaway-list li strong { color: white; }
+  .bullet {
+    width: 8px;
+    height: 8px;
+    background: #D9603A;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 48px 22px;
+    background: #FDF1E8;
+    border-top: 1px solid #F0DCC9;
+    margin-top: 64px;
+  }
+  .footer p { font-size: 14px; color: #6B5570; line-height: 1.6; }
+
+  @media (max-width: 680px) {
+    .hero h1 { font-size: 30px; }
+    .hero-stat-num { font-size: 36px; }
+    .hero-stats { gap: 24px; }
+    .takeaways { padding: 28px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <p class="hero-eyebrow">Sveriges Allmännytta · Inför-enkät · Maj 2026</p>
+  <h1>Gruppen i siffror</h1>
+  <p>AI för verksamhetsutveckling · 1 juni 2026</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">12</div>
+      <div class="hero-stat-label">svar</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">7</div>
+      <div class="hero-stat-label">använder AI dagligen</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">3</div>
+      <div class="hero-stat-label">har driftsatta AI-agenter</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">8</div>
+      <div class="hero-stat-label">bolag representerade</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="section">
+
+    <!-- Charts -->
+    <h2 class="section-title">Användning och kunskapsnivå</h2>
+    <p class="section-sub">Gruppen är mer avancerad än en typisk intro-publik — men med tydlig spridning</p>
+
+    <div class="charts-grid">
+      <div class="chart-card">
+        <h3>Hur ofta använder du AI-verktyg?</h3>
+        <p>12 respondenter</p>
+        <div class="chart-wrap">
+          <canvas id="chartFreq"></canvas>
+        </div>
+      </div>
+      <div class="chart-card">
+        <h3>Hur beskriver du din kunskapsnivå?</h3>
+        <p>12 respondenter</p>
+        <div class="chart-wrap">
+          <canvas id="chartKnowledge"></canvas>
+        </div>
+      </div>
+      <div class="chart-card">
+        <h3>Erfarenhet av AI-agenter</h3>
+        <p>Byggt, testat eller inte provat</p>
+        <div class="chart-wrap">
+          <canvas id="chartAgents"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI projects -->
+    <div class="projects-wrap" style="margin-top:8px;">
+      <h3 style="font-size:18px;font-weight:700;color:#2D1B33;margin-bottom:6px;">AI-projekt i verksamheterna idag</h3>
+      <p style="font-size:14px;color:#6B5570;">Vad de redan har i produktion eller pilot — utöver individuell användning</p>
+      <div class="projects-tags">
+        <span class="project-tag highlight">Energieffektivisering</span>
+        <span class="project-tag highlight">Ärendeklassificering</span>
+        <span class="project-tag highlight">Kundtjänsttranskribering</span>
+        <span class="project-tag highlight">AI-agenter i produktion</span>
+        <span class="project-tag">Kunskapsstöd</span>
+        <span class="project-tag">Hyresgästdialog / chatbot</span>
+        <span class="project-tag">Fakturahantering</span>
+        <span class="project-tag">Processanalys</span>
+        <span class="project-tag">Målstyrning</span>
+        <span class="project-tag">Systemutveckling med AI</span>
+        <span class="project-tag">Smarta kameror (miljöhus)</span>
+        <span class="project-tag">Scenarioanalys</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- What they want to learn -->
+  <div class="section" style="padding-top:0;">
+    <h2 class="section-title">Vad de vill lära sig</h2>
+    <p class="section-sub">Teman som återkommer i öppna svar</p>
+    <div class="themes-grid">
+      <div class="theme-card">
+        <div class="theme-num">4</div>
+        <div class="theme-label">Agenter och automatisering</div>
+        <div class="theme-desc">Konkret och praktiskt — inte teori om vad agenter är, utan hur man faktiskt bygger och driftsätter.</div>
+        <div class="theme-examples">
+          <span class="theme-tag">"agenter och hur man kan se på det arbetet och faktiskt göra"</span>
+        </div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-num">4</div>
+        <div class="theme-label">AI för verksamhetsutveckling</div>
+        <div class="theme-desc">Inte testa för testets skull — utan förstå var AI faktiskt skapar mest nytta i just deras verksamhet.</div>
+        <div class="theme-examples">
+          <span class="theme-tag">"identifiera var AI kan skapa mest nytta, inte bara testa"</span>
+        </div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-num">3</div>
+        <div class="theme-label">Data och integration</div>
+        <div class="theme-desc">Hur man arbetar med AI och intern data — "innanför väggarna", integration med fastighets- och ekonomisystem.</div>
+        <div class="theme-examples">
+          <span class="theme-tag">"data innanför våra väggar"</span>
+          <span class="theme-tag">"rapportpaket med automatik"</span>
+        </div>
+      </div>
+      <div class="theme-card">
+        <div class="theme-num">2</div>
+        <div class="theme-label">Organisation och risker</div>
+        <div class="theme-desc">Hur AI påverkar lärande, kultur och beslut. Risker med att AI förstärker både bra och dåliga egenskaper.</div>
+        <div class="theme-examples">
+          <span class="theme-tag">"AI som förstärkare av organisationen"</span>
+          <span class="theme-tag">"vibe-kodning vs ansvar"</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quotes -->
+  <div class="section" style="padding-top:0;">
+    <h2 class="section-title">Tre röster att ha med sig in i dagen</h2>
+    <p class="section-sub">Direkt ur enkäten — visar bredden i gruppen</p>
+    <div class="quotes-grid">
+      <div class="quote-card">
+        <p class="quote-text">"Så som vi använder AI i beslutsfattande idag, vill och bör vi verkligen använda AI som 'vibe' för affärsutveckling och strategiskt beslutsfattande?"</p>
+        <div class="quote-meta">Daglig användare · Leder AI-initiativ · Multi-agentsystem i produktion</div>
+      </div>
+      <div class="quote-card">
+        <p class="quote-text">"Att kunna förstå och identifiera var AI faktiskt kan skapa mest nytta i en verksamhet, så att man inte bara testar saker för testandets skull."</p>
+        <div class="quote-meta">Veckovis användare · Verksamhetsutveckling</div>
+      </div>
+      <div class="quote-card">
+        <p class="quote-text">"Hur jag kan få stöd i att driva utveckling, analysera verksamheten och skapa långsiktiga planer."</p>
+        <div class="quote-meta">Månadsvis användare · Förstår grunderna</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Takeaways -->
+  <div class="section" style="padding-top:0; padding-bottom:80px;">
+    <div class="takeaways">
+      <h2>Vad det innebär för dagen</h2>
+      <ul class="takeaway-list">
+        <li>
+          <span class="bullet"></span>
+          <span><strong>Hoppa snabbt förbi grunderna.</strong> De flesta är dagliga användare — börja på en nivå som respekterar det.</span>
+        </li>
+        <li>
+          <span class="bullet"></span>
+          <span><strong>Agenter är för viktiga för att vara "om vi hinner".</strong> Minst tre har driftsatta agenter och fyra frågar explicit om det. Ge det ordentligt utrymme.</span>
+        </li>
+        <li>
+          <span class="bullet"></span>
+          <span><strong>Den kritiska rösten är en tillgång.</strong> Respondenten som ifrågasätter "vibe-based business development" är ett perfekt diskussionsunderlag — inte en störning.</span>
+        </li>
+        <li>
+          <span class="bullet"></span>
+          <span><strong>Variansen är stor.</strong> En person har svårt att förklara vad AI är. En annan kör parallella agenter i terminalen. Övningarna behöver fungera för båda.</span>
+        </li>
+        <li>
+          <span class="bullet"></span>
+          <span><strong>Mer bollplank, mindre genomgång.</strong> Det efterfrågas explicit — bygg in tid för diskussion och övning.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>Enkätresultat sammanställda av <strong>Paulina Modlitba</strong> · Inför kurs 1 juni 2026</p>
+  <p style="margin-top:6px;">12 respondenter från 8 bolag inom Sveriges Allmännytta</p>
+</div>
+
+<script>
+  const C = {
+    orange:  '#D9603A',
+    dark:    '#2D1B33',
+    mid:     '#6B5570',
+    light:   '#F5C9B5',
+    lighter: '#FDF1E8',
+    warm1:   '#E8855A',
+    warm2:   '#F0A882',
+    warm3:   '#F5C9B5',
+  };
+
+  Chart.defaults.font.family = "'Inter', sans-serif";
+  Chart.defaults.color = '#6B5570';
+
+  // ── Frequency donut ──
+  new Chart(document.getElementById('chartFreq'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Dagligen', 'Varje vecka', 'Varje månad'],
+      datasets: [{
+        data: [7, 3, 2],
+        backgroundColor: [C.orange, C.dark, C.light],
+        borderWidth: 0,
+        hoverOffset: 8
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: '68%',
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: { padding: 16, font: { size: 13, weight: '500' }, boxWidth: 12, boxHeight: 12 }
+        },
+        tooltip: {
+          callbacks: {
+            label: ctx => ` ${ctx.label}: ${ctx.parsed} personer`
+          }
+        }
+      }
+    }
+  });
+
+  // ── Knowledge horizontal bar ──
+  new Chart(document.getElementById('chartKnowledge'), {
+    type: 'bar',
+    data: {
+      labels: [
+        'Mycket grundläggande',
+        'Förstår grunderna',
+        'Känner till flera verktyg',
+        'God förståelse / leder',
+        'Mycket kunnig / hjälper andra'
+      ],
+      datasets: [{
+        data: [1, 3, 5, 2, 1],
+        backgroundColor: [C.light, C.warm3, C.warm2, C.warm1, C.orange],
+        borderRadius: 6,
+        borderWidth: 0
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => ` ${ctx.parsed.x} person${ctx.parsed.x !== 1 ? 'er' : ''}`
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { color: 'rgba(45,27,51,0.06)' },
+          ticks: { stepSize: 1, font: { size: 12 } },
+          max: 6
+        },
+        y: {
+          grid: { display: false },
+          ticks: { font: { size: 11 } }
+        }
+      }
+    }
+  });
+
+  // ── Agents donut ──
+  new Chart(document.getElementById('chartAgents'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Byggt & driftsatt', 'Testat grundläggande', 'Inte provat / vill lära sig'],
+      datasets: [{
+        data: [3, 4, 5],
+        backgroundColor: [C.orange, C.warm2, C.lighter],
+        borderColor: ['transparent', 'transparent', '#F0DCC9'],
+        borderWidth: [0, 0, 1.5],
+        hoverOffset: 8
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: '68%',
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: { padding: 14, font: { size: 12, weight: '500' }, boxWidth: 12, boxHeight: 12 }
+        },
+        tooltip: {
+          callbacks: {
+            label: ctx => ` ${ctx.label}: ${ctx.parsed} person${ctx.parsed !== 1 ? 'er' : ''}`
+          }
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>
