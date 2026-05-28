@@ -318,6 +318,29 @@
   .badge-1 { background: #D9603A; color: white; }
   .badge-2 { background: rgba(217,96,58,0.15); color: #D9603A; }
   .badge-3 { background: #2D1B33; color: white; }
+  .badge-session { background: #1A7A5A; color: white; }
+  .session-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #1A7A5A;
+    background: rgba(26,122,90,0.12);
+    padding: 3px 10px;
+    border-radius: 999px;
+  }
+  .rag-note {
+    background: rgba(26,122,90,0.07);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-top: 16px;
+    font-size: 14px;
+    line-height: 1.65;
+    color: #2D1B33;
+    border-left: 3px solid #1A7A5A;
+  }
+  .rag-note strong { color: #1A7A5A; font-weight: 700; }
   .level-title { font-size: 22px; font-weight: 700; color: #2D1B33; }
   .level-desc { font-size: 15px; color: #6B5570; margin-top: 2px; }
 
@@ -550,8 +573,8 @@
           <div class="file-dot"></div>
           <div>
             <a href="demo6-agentflode.txt">Intro till AI-agenter — designa ett eget flöde</a>
-            <span class="file-desc">Vad är en AI-agent och vad är möjligt? Läsunderlag och designövning — ta med er hem och fundera vidare.</span>
-            <span class="file-level level-3">Om vi hinner</span>
+            <span class="file-desc">Vad är en AI-agent och vad är möjligt? Konkreta fastighetsexempel, verktygsjämförelse och designövning för Demo 8.</span>
+            <span class="file-level level-1">Agenter</span>
           </div>
         </li>
       </ul>
@@ -714,7 +737,7 @@
 
     <!-- ── Demos ── -->
     <div class="card" style="margin-top:44px;">
-      <h3>Fem demos — börja här</h3>
+      <h3>Åtta demos — börja här</h3>
 
       <!-- Kärnan -->
       <div class="level-header">
@@ -730,6 +753,7 @@
           <span class="demo-num">Demo 1 · Processanalys</span>
           <span class="demo-name">Kartlägg en process och identifiera AI-möjligheter</span>
           <span class="demo-audience">Alla</span>
+          <span class="session-tag">★ Kör under sessionen</span>
         </div>
         <p>Använd <em>demo5-processanalys.txt</em>. En detaljerad nulägesbeskrivning av hur Stadsbostäder hanterar felanmälningar — 5 steg, kända svagheter och nyckeltal. Var gör AI störst nytta? Var är det för riskabelt att automatisera? Det här är kärnan i att jobba med AI som verksamhetsutvecklare.</p>
         <span class="prompt-label">Prompt</span>
@@ -813,6 +837,7 @@ Håll analysen kort och beslutsbar. Vi ska kunna ta den till ledningsgruppen.
           <span class="demo-num">Demo 5 · Underhållsplanering</span>
           <span class="demo-name">Hitta mönster och risker i underhållsplanen</span>
           <span class="demo-audience">Förvaltning · Fastighetsutveckling · Ledning</span>
+          <span class="session-tag">★ Kör under sessionen</span>
         </div>
         <p>Ladda upp <em>demo3-underhallsdata.xlsx</em>. Datan innehåller 16 planerade åtgärder för 6 fastigheter. Två fastigheter har försenade kritiska åtgärder. En tredje har tre försenade poster på rad. Ser AI:n det — och vad säger den om riskerna?</p>
         <span class="prompt-label">Prompt</span>
@@ -823,6 +848,9 @@ Håll analysen kort och beslutsbar. Vi ska kunna ta den till ledningsgruppen.
 (4) Föreslår hur vi kan presentera detta för styrelsen — tydligt om riskerna, utan att skapa panik
 
 Var konkret och referera till fastighetsnamnen i datan.</div>
+        <div class="rag-note">
+          <strong>Data innanför väggarna — RAG:</strong> Det du gör nu är manuellt: du kopierar data och klistrar in den. RAG (Retrieval-Augmented Generation) är principen som gör samma sak automatiskt — AI:n hämtar relevant data direkt ur era system (Vitec, Archibus, SharePoint) i realtid, utan att du kopierar något. Det kräver IT-stöd att konfigurera, men är exakt vad Copilot i SharePoint och systemkopplingar i Power Automate bygger på. Om ni vill att AI:n ska kunna svara på frågor om er riktiga underhållsdata utan att ni laddar upp filer manuellt — det är RAG ni behöver prata med IT om.
+        </div>
       </div>
 
       <div class="demo-block">
@@ -840,6 +868,9 @@ Var konkret och referera till fastighetsnamnen i datan.</div>
 (4) Skriv ett kort styrelseunderlag (max 200 ord): ekonomiskt läge och vad vi avser göra
 
 Var tydlig om vad som är fakta från datan och vad som är din bedömning.</div>
+        <div class="rag-note">
+          <strong>Data innanför väggarna — RAG:</strong> Samma princip som Demo 5: just nu klistrar du in Excel-data manuellt. Med RAG kan AI:n ställa frågor direkt mot ert ekonomisystem i realtid — utan export, utan kopiering. Copilot i Excel och Microsoft Fabric bygger på precis det här. Om ni vill kunna fråga er ekonomi som en databasmodell är det ett RAG-upplägg ni ska be IT om — inte bara ett AI-konto.
+        </div>
       </div>
 
       <!-- Operativt -->
@@ -868,12 +899,12 @@ Var tydlig om vad som är fakta från datan och vad som är din bedömning.</div
 [Klistra in innehållet från demo1-felanmalan-batch.txt]</div>
       </div>
 
-      <!-- Om vi hinner -->
+      <!-- Agenter -->
       <div class="level-header">
-        <span class="level-badge badge-3">Om vi hinner</span>
+        <span class="level-badge badge-session">Agenter</span>
         <div>
-          <div class="level-title">Vad är möjligt härnäst?</div>
-          <div class="level-desc">Inte hands-on — ett tankeexperiment att ta med hem</div>
+          <div class="level-title">Från konversation till handling</div>
+          <div class="level-desc">Designa flöden som gör saker — inte bara svarar</div>
         </div>
       </div>
 
@@ -881,21 +912,27 @@ Var tydlig om vad som är fakta från datan och vad som är din bedömning.</div
         <div class="demo-title">
           <span class="demo-num">Demo 8 · AI-agenter</span>
           <span class="demo-name">Designa ett agentflöde för er verksamhet</span>
-          <span class="demo-audience">Alla — diskussion snarare än övning</span>
+          <span class="demo-audience">Alla · hands-on</span>
+          <span class="session-tag">★ Kör under sessionen</span>
         </div>
-        <p>Läs <em>demo6-agentflode.txt</em> som bakgrund. En AI-agent är inte en chatt — den utför uppgifter i sekvens, fattar enkla beslut och kopplar ihop system. Diskussionsövningen: vilken process på ert bolag skulle vara kandidat? Vad är ni oroliga för? Ingen kod krävs.</p>
-        <span class="prompt-label">Prompt</span>
-        <div class="code-block">Jag vill designa ett AI-agentflöde för [beskriv er process, t.ex. "hantering av felanmälningar" eller "månadsrapportering till styrelsen"].
+        <p>Läs <em>demo6-agentflode.txt</em> innan du börjar — det tar 5 minuter. En AI-agent är inte en chatt. Den tar ett mål, planerar steg, utför dem i ordning och rapporterar tillbaka. Den kan läsa filer, söka i system, fatta enkla beslut och koppla ihop verktyg. Det går att bygga enkla agenter redan idag utan att skriva kod: Claude Projects, Copilot Studio, Power Automate, Make.com. I den här övningen designar du ett eget flöde för en process på ditt bolag — och ber AI:n hjälpa dig rita det.</p>
+        <span class="prompt-label">Prompt — designa ert agentflöde</span>
+        <div class="code-block">Jag vill designa ett AI-agentflöde för [beskriv er process, t.ex. "hantering av felanmälningar" eller "månadsavstämning av hyresutfall"].
 
-Nuläget ser ut så här: [beskriv hur det fungerar idag med de konkreta stegen]
+Nuläget ser ut så här, steg för steg:
+[beskriv hur det fungerar idag — vem gör vad, i vilken ordning]
 
-Våra system är: [t.ex. Vitec, Outlook, Excel, Teams]
+Våra system idag: [t.ex. Vitec, Outlook, Teams, Excel, SharePoint]
 
 Hjälp mig:
-(1) Identifiera vilka steg som är lämpliga att automatisera
-(2) Identifiera var en människa fortfarande behöver vara i loopen — och varför
-(3) Rita ett enkelt flödesschema i text för hur agenten skulle fungera
-(4) Föreslå ett sätt att börja testa utan stora IT-investeringar</div>
+(1) Identifiera vilka steg som är lämpliga att automatisera och varför
+(2) Identifiera var en människa fortfarande behöver vara i loopen — och varför det är viktigt
+(3) Rita ett enkelt flödesschema i text: INPUT → steg 1 → steg 2 → steg 3 → OUTPUT
+(4) Rekommendera vilket verktyg vi börjar med (Copilot Studio, Power Automate, Make.com, Claude Projects) — och varför det passar vår situation
+(5) Beskriv ett minimalt pilotupplägg vi kan köra de närmaste 4 veckorna utan stor IT-investering</div>
+        <div class="note-box" style="margin-top:16px;">
+          <strong>Verktygen du kan börja med idag:</strong> <strong>Claude Projects</strong> (instruktioner + filer = enkel "agent" för ett specifikt ändamål, ingen IT behövs) · <strong>Copilot Studio</strong> (om ni är i M365 — bygg chattbottar mot era SharePoint-data utan kod) · <strong>Power Automate</strong> (koppla ihop mejl, Teams och AI-klassificering, ingår i M365) · <strong>Make.com / Zapier</strong> (visuellt flödesbygge mot externa system utan kod) · <strong>n8n</strong> (open source, kräver IT men ger full kontroll och kan köras lokalt).
+        </div>
       </div>
     </div>
 
@@ -936,6 +973,14 @@ Hjälp mig:
         <li>En hyresgäst är väldigt upprörd i mejlet. Hjälp mig formulera ett svar som erkänner problemet utan att lova saker vi inte kan hålla.</li>
       </ul>
 
+      <h4>AI-agenter &amp; automatisering</h4>
+      <ul>
+        <li>Vi hanterar felanmälningar via mejl idag. Beskriv steg för steg hur ett agentflöde skulle fungera — som sorterar, tilldelar till rätt fastighetsskötare och skickar bekräftelse till hyresgästen automatiskt. Var ska vi ha människa i loopen, och varför?</li>
+        <li>Vi vill bygga en enkel agent i Power Automate som läser inkommande hyresgästmejl och klassificerar dem (felanmälan, fakturaärende, uppsägning, övrigt). Beskriv hur vi sätter upp det utan att skriva kod, och vad vi behöver förbereda.</li>
+        <li>Vad är skillnaden mellan att koppla AI direkt mot vår databas i Vitec (RAG), och att exportera data till en fil och klistra in manuellt? När räcker det manuella — och när är det värt att investera i en riktig integration?</li>
+        <li>Vilka tre agentflöden skulle ge störst tidsbesparing för ett allmännyttebolag med 3 000 lägenheter? Motivera utifrån typiska kostnadsställen och ärendetyper i branschen.</li>
+      </ul>
+
       <div class="note-box" style="margin-top:28px;">
         <strong>Hur du bygger vidare:</strong> Börja med en specifik fråga. Granska svaret kritiskt — håller du med? Ställ sedan en följdfråga: "Förklara mer om varför du prioriterade just den fastigheten" eller "Kan du ge ett konkret exempel från datan som stödjer den slutsatsen?" Kritisk granskning är en del av att jobba bra med AI.
       </div>
@@ -954,7 +999,7 @@ Hjälp mig:
         Tanken är att ni ska gå från kurs idag till att faktiskt testa på kontoret imorgon — och sedan bestämma vad ni vill göra med AI hos er.
       </p>
       <div class="about-box">
-        <strong>ÖrebroBostäder-teamet:</strong> Ni är sex kollegor här idag. Det är ett guldläge — kör Demo 1 (processanalysen) tillsammans och byt ut Stadsbostäders felanmälningsflöde mot en process ni faktiskt jobbar med. Ni kan ta med slutsatserna hem som ett riktigt underlag.
+        <strong>Tips för er grupp:</strong> Ni är här med kollegor från olika allmännyttebolag — ett guldläge. I Demo 1 kan ni byta ut Stadsbostäders process mot en ni faktiskt jobbar med, och ta med slutsatserna hem som ett riktigt underlag. I Demo 8 — diskutera konkret: vilken process på ert bolag är kandidat nummer ett för ett agentflöde? Vad är förutsättningarna, och vem behöver vara med?
       </div>
     </div>
 
@@ -964,7 +1009,7 @@ Hjälp mig:
 <!-- ── Footer ── -->
 <div class="footer">
   <p class="footer-title">Paulina Modlitba</p>
-  <p>Föreläsning &amp; material framtagna för Sveriges Allmännytta · Juni 2025</p>
+  <p>Föreläsning &amp; material framtagna för Sveriges Allmännytta · Juni 2026</p>
   <p style="margin-top:14px;font-size:13px;opacity:0.6;">Allt material är fritt att använda i utbildningssyfte.</p>
 </div>
 

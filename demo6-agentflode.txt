@@ -14,68 +14,158 @@ En AI-agent ser ut så här:
 
 Agenten kan: läsa filer, söka på nätet, skriva tillbaka till system, anropa andra verktyg, fatta enkla beslut längs vägen.
 
+Den avgörande skillnaden: agenten agerar, inte bara svarar.
+
 ════════════════════════════════════════
-ETT KONKRET EXEMPEL: FELANMÄLNINGSAGENTEN
+KONKRET EXEMPEL 1: FELANMÄLNINGSAGENTEN
 ════════════════════════════════════════
 
-Tänk dig att du ger en agent det här uppdraget:
+Du ger agenten uppdraget:
+"Läs alla nya felanmälningar som kom in idag, bedöm prioritet, tilldela rätt fastighetsskötare och skicka bekräftelse till hyresgästen."
 
-"Läs alla nya felanmälningar som kom in idag, bedöm prioritet, tilldela rätt fastighetsskötare och skicka en bekräftelse till hyresgästen."
-
-Agenten skulle kunna göra det här automatiskt:
+Agenten gör:
 
 STEG 1 — Läs inkorgen
   → Hämtar alla mejl märkta "felanmälan" sedan igår kl 17:00
 
 STEG 2 — Förstå och kategorisera
   → Läser varje ärende
-  → Identifierar: fastighet, typ av fel, klagande hyresgäst, eventuell akutnivå
+  → Identifierar: fastighet, typ av fel, hyresgäst, akutnivå
   → Flaggar oklara ärenden för mänsklig granskning
 
 STEG 3 — Slå upp fastighetsskötare
   → Kollar i systemet: vem ansvarar för Bergsgatan 12?
-  → Skickar ärende till rätt person med sammandrag
+  → Skickar ärende med sammandrag till rätt person
 
 STEG 4 — Svara hyresgästen
-  → Skriver ett personligt bekräftelsemejl: "Hej Fatima, vi har fått din anmälan om läckaget under diskbänken. Vi prioriterar det och en fastighetsskötare kontaktar dig inom 24 timmar."
+  → Skriver personligt bekräftelsemejl: "Hej Fatima, vi har fått din
+    anmälan om läckaget under diskbänken. En fastighetsskötare
+    kontaktar dig inom 24 timmar."
 
 STEG 5 — Rapportera
-  → Summerar: 5 ärenden inkomna, 1 akut, 3 normala, 1 låg prio, 1 flaggat för granskning
+  → Summerar: 5 ärenden inkomna, 1 akut, 3 normala, 1 låg prio,
+    1 flaggat för granskning
+
+════════════════════════════════════════
+KONKRET EXEMPEL 2: HYRESUTFALLSAGENTEN
+════════════════════════════════════════
+
+Varje månadsskifte:
+  → Agenten hämtar utfallsdata från ekonomisystemet
+  → Jämför mot budget per kostnadsslag
+  → Identifierar avvikelser över 5 %
+  → Hämtar relevanta noteringar från föregående månad
+  → Skriver ett utkast till ekonomikommentarerna i styrelsepaketet
+  → Skickar utkastet till ekonomichefen för godkännande
+
+Människa i loopen: ekonomichefen granskar och godkänner innan det går vidare.
+
+════════════════════════════════════════
+KONKRET EXEMPEL 3: KUNDUNDERSÖKNINGSAGENTEN
+════════════════════════════════════════
+
+Efter varje avslutat ärende i kundtjänst:
+  → Agenten skickar en kort 2-frågorsmätning till hyresgästen
+  → Läser svaret när det kommer in
+  → Kategoriserar: nöjd / missnöjd / kräver uppföljning
+  → Vid missnöjd: skapar automatiskt ett uppföljningsärende med
+    sammanfattning och kontaktinfo
+  → Sammanställer veckovis statistik till kundservicechefen
+
+════════════════════════════════════════
+VART HANTERAR MAN "DATA INNANFÖR VÄGGARNA"?
+════════════════════════════════════════
+
+Ett vanligt hinder: ni vill att AI:n ska kunna svara på frågor om
+er riktiga data — utan att exportera filer och klistra in manuellt.
+
+Det kallas RAG (Retrieval-Augmented Generation):
+  → AI:n kopplas mot era befintliga datakällor (Vitec, SharePoint,
+    ekonomisystem, ärendelogg)
+  → När du ställer en fråga hämtar AI:n relevant data i realtid
+  → Svaret baseras på er faktiska, aktuella data
+
+Exempel på RAG i praktiken:
+  · Copilot i SharePoint — ställer frågor mot era intranätdokument
+  · Copilot i Teams/Outlook — söker i er kommunikationshistorik
+  · Power Automate + AI Builder — kopplar flöden mot era system
+  · Egna lösningar via API — kräver IT men ger full kontroll
+
+Kräver det kod? Copilot-varianter kräver ingen kod om ni är i M365.
+Egna databaskopplingar mot Vitec eller liknande kräver IT-stöd.
+
+════════════════════════════════════════
+VERKTYGEN — VAD PASSAR NÄR?
+════════════════════════════════════════
+
+CLAUDE PROJECTS
+  Passar: enkel "agent" som alltid har rätt kontext och instruktioner
+  Kräver: Claude-konto (gratis eller betalt)
+  Bra för: Interna kunskapsbaser, kundtjänstmanus, processbeskrivningar
+  Begränsning: Utför inte åtgärder i andra system automatiskt
+
+COPILOT STUDIO (Microsoft)
+  Passar: Chattbottar mot SharePoint, Teams, Dynamics, Outlook
+  Kräver: M365-licens med Copilot (extra kostnad)
+  Bra för: Hyresgästdialog, intern kunskapsstöd, HR-frågor
+  Begränsning: Bundet till Microsoft-ekosystemet
+
+MICROSOFT POWER AUTOMATE
+  Passar: Flödesautomation inom M365 (mejl → Teams → AI → åtgärd)
+  Kräver: Ingår i de flesta M365-planer
+  Bra för: Klassificering av inkommande ärenden, notifieringsflöden
+  Begränsning: Komplex logik kräver vana
+
+MAKE.COM / ZAPIER
+  Passar: Koppla ihop system utan kod via visuellt flödesbygge
+  Kräver: Konto (gratisplan finns)
+  Bra för: Enkla automationer mellan system som inte pratar med varandra
+  Begränsning: Kostnad vid volym, inte M365-native
+
+N8N
+  Passar: Avancerade agentflöden med full kontroll, kan köras lokalt
+  Kräver: IT-stöd för installation
+  Bra för: Känslig data som inte ska lämna era servrar, komplexa flöden
+  Begränsning: Teknisk tröskel
 
 ════════════════════════════════════════
 ÖVNING: DESIGNA ERT AGENTFLÖDE
 ════════════════════════════════════════
 
-Välj en process ni vill förbättra på ert bolag. Beskriv den för AI:n och be om hjälp att:
-1. Identifiera vilka steg som är automatiserbara
-2. Identifiera var det fortfarande behövs en människa
-3. Skissa på hur ett agentflöde skulle se ut steg-för-steg
+Välj en process på ert bolag. Be AI:n hjälpa er designa den.
 
 Prompt att börja med:
 ───────────────────────────────────────
 Jag vill designa ett AI-agentflöde för [beskriv er process].
-Nuläget ser ut så här: [beskriv hur det fungerar idag].
-Våra system är: [vilka system/verktyg ni använder].
-Hjälp mig: (1) identifiera vilka steg som är bra att automatisera,
-(2) vilka steg som bör ha mänsklig kontroll,
-(3) rita ett enkelt flödesschema i text för hur agenten skulle fungera.
+
+Nuläget ser ut så här, steg för steg:
+[beskriv hur det fungerar idag — vem gör vad, i vilken ordning]
+
+Våra system idag: [t.ex. Vitec, Outlook, Teams, Excel, SharePoint]
+
+Hjälp mig:
+(1) Identifiera vilka steg som är bra att automatisera
+(2) Identifiera var en människa fortfarande behöver vara i loopen — och varför
+(3) Rita ett enkelt flödesschema i text: INPUT → steg 1 → steg 2 → OUTPUT
+(4) Rekommendera vilket verktyg vi börjar med och varför
+(5) Beskriv ett minimalt pilotupplägg för de närmaste 4 veckorna
 ───────────────────────────────────────
-
-════════════════════════════════════════
-VAD SOM FAKTISKT FINNS ATT BYGGA MED IDAG
-════════════════════════════════════════
-
-• Claude Projects + egna instruktioner = enkel "agent" som alltid har rätt kontext
-• Make.com / Zapier = koppla ihop AI med era befintliga system utan kod
-• Microsoft Power Automate + Copilot = om ni är i M365-ekosystemet
-• Faktiska agentramverk (kräver IT): n8n, LangChain, OpenAI Assistants API
-
-Det behöver inte vara avancerat för att spara tid.
-En enkel e-postsorterare som körs varje morgon kan frigöra 30 minuter per dag — 120+ timmar per år för en handläggare.
 
 ════════════════════════════════════════
 DISKUSSIONSFRÅGOR
 ════════════════════════════════════════
-• Vilken process på ert bolag är mest lämpad för ett agentflöde?
-• Vad är ni oroliga för? (Datakvalitet? Fel beslut? Hyresgästupplevelse?)
-• Vem på ert bolag skulle behöva vara med för att det ska bli verklighet?
+
+· Vilken process på ert bolag är kandidat nummer ett för ett agentflöde?
+  (Tänk: repetitiv, regelbaserad, hög volym, tydlig input och output)
+
+· Var behöver ni människa i loopen — och av vilken anledning?
+  (Kvalitetsgranskning? Ansvarsfråga? Hyresgästrelation?)
+
+· Har ni data som behöver "stanna innanför väggarna"?
+  (Personnummer, hyresbelopp, ärendekommunikation)
+
+· Vem på ert bolag behöver vara med för att det ska bli verklighet?
+  (IT, juridik, fastighetsförvaltningen, ledningen?)
+
+· Vad är era tre största farhågor — och är de tekniska, organisatoriska
+  eller juridiska till sin natur?
