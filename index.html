@@ -919,20 +919,17 @@ Var tydlig om vad som är fakta från datan och vad som är din bedömning.</div
           <span class="demo-audience">Alla · hands-on</span>
           <span class="session-tag">★ Kör under sessionen</span>
         </div>
-        <p>Läs <em>demo6-agentflode.txt</em> innan du börjar — det tar 5 minuter. En AI-agent är inte en chatt. Den tar ett mål, planerar steg, utför dem i ordning och rapporterar tillbaka. Den kan läsa filer, söka i system, fatta enkla beslut och koppla ihop verktyg. Det går att bygga enkla agenter redan idag utan att skriva kod: Claude Projects, Copilot Studio, Power Automate, Make.com. I den här övningen designar du ett eget flöde för en process på ditt bolag — och ber AI:n hjälpa dig rita det.</p>
-        <span class="prompt-label">Prompt — designa ert agentflöde</span>
-        <div class="code-block">Jag vill designa ett AI-agentflöde för [beskriv er process, t.ex. "hantering av felanmälningar" eller "månadsavstämning av hyresutfall"].
+        <p>Samma underlag som i Demo 1 — <em>demo5-processanalys.txt</em>. Nu tar vi nästa steg: i stället för att fråga var AI kan hjälpa till, designar vi ett flöde som faktiskt <em>gör</em> jobbet. Filen är redan uppladdad om du arbetar i Claude Projects. En AI-agent tar ett mål, planerar stegen, utför dem i ordning och rapporterar tillbaka — den svarar inte bara.</p>
+        <span class="prompt-label">Prompt — designa agentflödet</span>
+        <div class="code-block">Jag vill designa ett AI-agentflöde för felanmälningshanteringen på Stadsbostäder AB.
 
-Nuläget ser ut så här, steg för steg:
-[beskriv hur det fungerar idag — vem gör vad, i vilken ordning]
-
-Våra system idag: [t.ex. Vitec, Outlook, Teams, Excel, SharePoint]
+[Ladda upp demo5-processanalys.txt — eller klistra in filens hela innehåll om du inte kan ladda upp filer]
 
 Hjälp mig:
 (1) Identifiera vilka steg som är lämpliga att automatisera och varför
 (2) Identifiera var en människa fortfarande behöver vara i loopen — och varför det är viktigt
 (3) Rita ett enkelt flödesschema i text: INPUT → steg 1 → steg 2 → steg 3 → OUTPUT
-(4) Rekommendera vilket verktyg vi börjar med (Copilot Studio, Power Automate, Make.com, Claude Projects) — och varför det passar vår situation
+(4) Rekommendera vilket verktyg vi börjar med (Copilot Studio, Power Automate, Make.com eller Claude Projects) — och varför det passar vår situation
 (5) Beskriv ett minimalt pilotupplägg vi kan köra de närmaste 4 veckorna utan stor IT-investering</div>
         <div class="note-box" style="margin-top:16px;">
           <strong>Verktygen du kan börja med idag:</strong> <strong>Claude Projects</strong> (instruktioner + filer = enkel "agent" för ett specifikt ändamål, ingen IT behövs) · <strong>Copilot Studio</strong> (om ni är i M365 — bygg chattbottar mot era SharePoint-data utan kod) · <strong>Power Automate</strong> (koppla ihop mejl, Teams och AI-klassificering, ingår i M365) · <strong>Make.com / Zapier</strong> (visuellt flödesbygge mot externa system utan kod) · <strong>n8n</strong> (open source, kräver IT men ger full kontroll och kan köras lokalt).
